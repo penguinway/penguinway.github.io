@@ -1,0 +1,947 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>追番列表 | 企鹅的小站</title><meta name="author" content="Penguin"><meta name="copyright" content="Penguin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="生命不息，追番不止！         .bangumi-tabs{margin-bottom:15px;margin-top:15px}.bangumi-tab{padding:5px}a.bangumi-tab{text-decoration:none}.bangumi-active{background:#657b83;color:#fff}.bangumi-item{positi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="追番列表">
+<meta property="og:url" content="http://penguinway.github.io/bangumis/index.html">
+<meta property="og:site_name" content="企鹅的小站">
+<meta property="og:description" content="生命不息，追番不止！         .bangumi-tabs{margin-bottom:15px;margin-top:15px}.bangumi-tab{padding:5px}a.bangumi-tab{text-decoration:none}.bangumi-active{background:#657b83;color:#fff}.bangumi-item{positi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://image.penguinway.space/i/2023/05/22/646b8a951dcd7.jpg">
+<meta property="article:author" content="Penguin">
+<meta property="article:tag" content="Code">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://image.penguinway.space/i/2023/05/22/646b8a951dcd7.jpg"><link rel="shortcut icon" href="http://image.penguinway.space/i/2023/05/22/646b8dccc1c35.jpg"><link rel="canonical" href="http://penguinway.github.io/bangumis/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '追番列表',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-03-26 16:50:24'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="http://image.penguinway.space/i/2023/05/22/646b8a951dcd7.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="企鹅的小站"><span class="site-name">企鹅的小站</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">追番列表</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container">
+<blockquote>
+    <p>生命不息，追番不止！</p>
+</blockquote>
+
+
+<style>
+    .bangumi-tabs{margin-bottom:15px;margin-top:15px}.bangumi-tab{padding:5px}a.bangumi-tab{text-decoration:none}.bangumi-active{background:#657b83;color:#fff}.bangumi-item{position:relative;clear:both;padding:10px 0;border-bottom:1px solid #ddd;min-height:180px}@media screen and (max-width:600px){.bangumi-item{width:100%}}.bangumi-picture{position:absolute;left:0;top:10px;width:110px}.bangumi-picture img{margin:10px 0}.bangumi-info{padding-left:120px;margin-top:10px;min-height:160px}.bangumi-meta{font-size:12px;padding-right:10px;height:45px}.bangumi-summary{font-size:12px;margin-top:10px}.bangumi-summary>p{word-break:break-all;text-overflow:ellipsis;overflow:hidden;white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3}.bangumi-comments{font-size:12px}.bangumi-pagination{margin-top:15px;text-align:center;margin-bottom:10px}.bangumi-button{padding:5px}.bangumi-button:hover{background:#657b83;color:#fff}.bangumi-hide{display:none}.bangumi-show{display:block}.bangumi-title{font-size:18px;font-weight:700}.bangumi-title a{line-height:1;text-decoration:none}.bangumi-info-items{font-size:12px;color:#2fd8d8;padding-top:10px;line-height:1;float:left;width:100%}.bangumi-info-item{display:inline-block;width:13%;border-right:1px solid #2fd8d8;text-align:center;height:34px}.bangumi-info-label{display:block;line-height:12px}.bangumi-info-item em{display:block;padding-top:6px;line-height:17px;font-style:normal;font-weight:700}.bangumi-info-total{padding-top:11px;display:block;line-height:12px;font-weight:700}.bangumi-info-item-score{border-right:1px solid #0000;width:50px}.bangumi-info-label-em{color:transparent;opacity:0;visibility:hidden;line-height:6px!important;padding:0!important}@media (max-width:650px){.bangumi-coin,.bangumi-type{display:none}.bangumi-info-item{width:16%}}@media (max-width:590px){.bangumi-danmaku,.bangumi-wish{display:none}.bangumi-info-item{width:19%}}@media (max-width:520px){.bangumi-doing,.bangumi-play{display:none}.bangumi-info-item{width:24%}}@media (max-width:480px){.bangumi-collect,.bangumi-follow{display:none}.bangumi-info-item{width:30%}}@media (max-width:400px){.bangumi-area{display:none}.bangumi-info-item{width:45%}}.bangumi-my-comments{border:1px dashed #8f8f8f;padding:3px;border-radius:5px}.bangumi-starstop{background:url(https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.7.9/lib/img/rate_star_2x.png) 100% 100%/10px 19.5px repeat-x;height:10px;width:50px;display:inline-block;float:none}.bangumi-starlight{background:url(https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.7.9/lib/img/rate_star_2x.png) 0 0/10px 19.5px repeat-x;height:10px;display:block;width:100%}.bangumi-starlight.stars1{width:5px}.bangumi-starlight.stars2{width:10px}.bangumi-starlight.stars3{width:15px}.bangumi-starlight.stars4{width:20px}.bangumi-starlight.stars5{width:25px}.bangumi-starlight.stars6{width:30px}.bangumi-starlight.stars7{width:35px}.bangumi-starlight.stars8{width:40px}.bangumi-starlight.stars9{width:45px}.bangumi-starlight.stars10{width:50px}.bangumi-info .bangumi-progress{width:100%;height:24px;background-color:#f2f2f2;border-radius:5px;overflow:hidden;font-size:16px;text-align:center;position:relative}.bangumi-info .bangumi-progress-text{z-index:100;position:relative;color:#3c4858;line-height:24px}.bangumi-info .bangumi-progress .progress-bar{z-index:50;height:100%;background-color:#007bffad;border-radius:5px;position:absolute;top:0}
+    
+</style>
+<div class="bangumi-tabs">
+    <a class="bangumi-tab" id="bangumi-tab1" href="javascript:;" rel="external" target="_self" onclick="return false">
+    想看
+    (7)</a>
+    <a class="bangumi-tab" id="bangumi-tab2" href="javascript:;" rel="external" target="_self" onclick="return false">
+        在看
+        (3)</a>
+    <a class="bangumi-tab" id="bangumi-tab3" href="javascript:;" rel="external" target="_self" onclick="return false">
+        已看
+        (4)</a>
+</div>
+<div>
+    <div id="bangumi-item1">
+        
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/96/6c/404809_H2HnH.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/404809">末日列车去哪里？</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全12话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>原创</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        12767
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>6.6</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：0/12</div>
+            <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：郊外的某个小镇。
+这里不是一个随处可见的普通乡村……。
+这里的居民产生了巨大的异变。
+即使在这样的情况下，千仓静留也有着坚定的想法。
+想再一次见到行踪不明的朋友们！
+静留她们在被废弃且停止行驶的电车里，在不知道能不能活着回来的情况...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/0f/0b/387822_nHUhn.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/387822">白圣女与黑牧师</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全12话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>恋爱</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        9135
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>6.7</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：0/12</div>
+            <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：某国的教会住着长相可爱但有着懒洋洋小毛病的圣女——塞西莉亚，以及外表严肃却十分温柔，对圣女过度保护、家务全能的牧师——劳伦斯，两人一起度过的每一天，无时无刻都在不自觉地放闪。
+圣女×牧师×同居=奇迹般令人心焦！在幻想世界中展开的“不自觉的...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/43/d9/14588_bDB2r.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/14588">摇曳百合</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全12话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>百合</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        16084
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>7.6</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：0/12</div>
+            <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：在七森中学的校园里，无所事事四人帮——女主角赤座灯里、暴走的岁纳京子、吐糟役的船见结衣，以及在人前会伪装成可爱女孩的吉川千夏，擅自把废了部的茶道社部室据为己用，并且自称地建立了娱乐部。擅自使用课室又引来了学生会的介入，于是各种百合妄想也在作...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/f2/9f/28900_PB3pC.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/28900">摇曳百合♪♪</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全12话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>百合</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        12959
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>7.7</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：0/12</div>
+            <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：占据了旧茶道部的活动室、继续擅自进行“娱乐部”活动（虽说如此也没啥明确的活动内容）的4人组。
+对她们的行为持续关注、继续多管闲事（？）的学生会。
+延续第一季的爱意满载、每天元气满满的轻松百合故事。...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/77/c3/454684_ZH5tU.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/454684">BanG Dream! Ave Mujica</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全13话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>BanGDream</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        23167
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>4.2</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：0/13</div>
+            <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：「言ったでしょう？残りの人生、わたくしに下さいと」
+
+豊川祥子がメンバーを招き入れたバンド・Ave Mujicaは、
+ライブやメディア露出など、商業的な成功を収めていた。
+
+運命をともにすると誓った仲間も、生まれ育った家も失った...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/fe/31/420628_2ZEz0.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/420628">药屋少女的呢喃</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全24话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>2023年10月</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        17064
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>7.4</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：0/24</div>
+            <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：大陆的中央有个大国，在那个国家的后宫之中有一位少女，其名为“猫猫”。她以前在花街做药师，现在在后宫做事。某天，她得知皇子们皆早夭，而现在的两个皇子都因为生病而逐渐衰弱。于是，在好奇心的驱使下，她开始调查事情的真相，就好像在说世上不可能存在诅...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/b8/26/498934_KffF9.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/498934">群花绽放，彷如修罗</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全12话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>2025年1月</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        6860
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>6.8</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：0/12</div>
+            <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：住在人口只有600人的小岛十鸣岛的花奈，她非常喜欢朗读，甚至为岛上的孩子们举办朗读会。
+感受到花奈的“阅读”具有吸引人的力量的瑞希，邀请她加入自己担任部长的广播社。
+“说出你真正的心愿，我会帮你实现”
+“我想加入广播社。”
+决定加入...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-pagination">
+    <a class="bangumi-button bangumi-firstpage" href="javascript:;" target="_self" onclick="return false"> 首页</a>
+    <a class="bangumi-button bangumi-previouspage" href="javascript:;" target="_self" onclick="return false">上一页</a>
+    <span class="bangumi-pagenum">2 / 3</span>
+    <a class="bangumi-button bangumi-nextpage" href="javascript:;" target="_self" onclick="return false">下一页</a>
+    <a class="bangumi-button bangumi-lastpage" href="javascript:;" target="_self" onclick="return false">尾页</a>
+</div>
+        
+    </div>
+    <div id="bangumi-item2">
+        
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/ce/3c/430699_hsj90.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/430699">金牌得主</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全13话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>运动</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        11053
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>8</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：12/13</div>
+            <div class="progress-bar" style="width: 92%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：作为滑冰者遭遇挫折的青年·明浦路司遇到了对花样滑冰世界充满憧憬的少女·结束祈。
+在对冰场怀有执念的祈的推动下，司决定亲自担任教练。
+随着祈逐渐展现出自己的才能，司也作为指导者不断成长。
+两人组成搭档，目标是荣耀的“金牌得主”——！...
+            </p>
+        </div>
+    </div>
+    
+    <div class="bangumi-comments" >
+            <div class="bangumi-my-comments">
+                我的评分：
+                    
+                        <span class="bangumi-starstop"><span
+                                class="bangumi-starlight stars9"></span></span>
+                        
+                                <br>
+                                我的评价：虽然作画稍有瑕疵，但总体瑕不掩瑜，从分镜到剧情节奏都把握得非常好，1月番力荐～
+            </div>
+    </div>
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/09/16/219200_wFT9i.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/219200">擅长捉弄的高木同学</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全12话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>恋爱</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        18699
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>7.5</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：1/12</div>
+            <div class="progress-bar" style="width: 8%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：“今天一定要捉弄高木同学，让她害羞！”
+某所中学，在各种方面都被邻座的女生高木同学捉弄的男生西片。
+他为了对此反击而每天奋斗，但……？
+这样的高木同学与西片带来的全力“捉弄”青春大战开始了！...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/e7/a7/428735_1v11n.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/428735">BanG Dream! It&#39;s MyGO!!!!!</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全13话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>BanGDream</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        37751
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>8.1</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：0/13</div>
+            <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：「能一辈子和我搞乐队吗？」
+
+在高一的春季即将结束之时，羽丘女子学园里人人都在参加乐队活动。
+入学较晚的爱音，也为了尽快融入班级，急忙寻找乐队成员。
+在寻找时，她发现被称为「羽丘的不可思议少女」的灯还没有参加乐队，
+于是爱音不由得...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-pagination">
+    <a class="bangumi-button bangumi-firstpage" href="javascript:;" target="_self" onclick="return false"> 首页</a>
+    <a class="bangumi-button bangumi-previouspage" href="javascript:;" target="_self" onclick="return false">上一页</a>
+    <span class="bangumi-pagenum">2 / 3</span>
+    <a class="bangumi-button bangumi-nextpage" href="javascript:;" target="_self" onclick="return false">下一页</a>
+    <a class="bangumi-button bangumi-lastpage" href="javascript:;" target="_self" onclick="return false">尾页</a>
+</div>
+        
+    </div>
+    <div id="bangumi-item3">
+        
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/68/a5/309670_SCMw3.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/309670">关于前辈很烦人的事</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全12话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>恋爱</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        8570
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>6.8</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：12/12</div>
+            <div class="progress-bar" style="width: 100%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：五十岚双叶，是入职丝卷商社刚到第二年，想要尽快独当一面的新人。武田晴海，则是个性有些粗犷，但很会照顾人的前辈。双叶虽然觉得武田前辈比较烦人，但有时也会觉得温馨，后来还是觉得很烦人……就这样摇摆不定。...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/e2/e7/328609_2EHLJ.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/328609">孤独摇滚！</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全12话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>芳文社</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        49875
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>8.4</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：0/12</div>
+            <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：作为网络吉他手“吉他英雄”而广受好评的后藤一里，在现实中却是个什么都不会的沟通障碍者。一里有着组建乐队的梦想，但因为不敢向人主动搭话而一直没有成功，直到一天在公园中被伊地知虹夏发现并邀请进入缺少吉他手的“结束乐队”。可是，完全没有和他人合作...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/75/c1/431767_bX7FZ.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/431767">GIRLS BAND CRY</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全13话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>乐队</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        29526
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>7.6</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：13/13</div>
+            <div class="progress-bar" style="width: 100%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：无论是愤怒、喜悦还是悲伤，全都倾注其中。
+高中二年级，从学校退学，只身在东京以大学为目标的主人公。被同伴背叛，不知如何是好的少女。被父母抛弃，一个人在大城市里打工维生的女孩子。
+虽然这个世界总是背叛我们。虽然什么都不能称心如意。但是，因...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-item">
+    <div class="bangumi-picture"><img src="https://cdn.jsdelivr.net/npm/hexo-bilibili-bangumi@1.2.0/lib/img/loading.gif"  data-src="https://lain.bgm.tv/r/400/pic/cover/l/48/9d/1424_q8FMQ.jpg" referrerPolicy="no-referrer" width="110" style="width:110px;margin:20px auto;" />
+    </div>
+    <div class="bangumi-info">
+        <div class="bangumi-title">
+            <a target="_blank" href="https://bangumi.tv/subject/1424">轻音少女</a>
+        </div>
+        <div class="bangumi-meta">
+            <span class="bangumi-info-items" >
+                
+                    <span class="bangumi-info-item">
+                        <span class="bangumi-info-total">全14话</span><em
+                                class="bangumi-info-label-em">0</em>
+                        </span>
+                
+                <span class="bangumi-info-item bangumi-type">
+                    <span class="bangumi-info-label">类型</span> <em>动画</em>
+                </span>
+                <span class="bangumi-info-item bangumi-tag">
+                    <span class="bangumi-info-label">标签</span> <em>京阿尼</em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-follow">
+                    <span class="bangumi-info-label">关注</span> <em>
+                        41970
+                    </em>
+                </span>
+                <span class="bangumi-info-item bangumi-info-item-score">
+                    <span class="bangumi-info-label">评分</span>
+                    <em>8.2</em>
+                </span>
+            </span>
+        </div>
+        
+        <div class="bangumi-progress" style="margin-top:5px;">
+            <div class="bangumi-progress-text">追番进度：13/14</div>
+            <div class="progress-bar" style="width: 93%;"></div>
+        </div>
+        
+        <div class="bangumi-summary" >
+            <p>
+                简介：春天，在新生决定社团的时候，田井中律硬拉着青梅竹马的秋山澪参观轻音部让其入部，在得知前辈们毕业后由于人数不足将面临闭部结局，秋山澪与琴吹紬成为了轻音部成员，但离4人指标还差1位名额。这时，一名弄错了部名的少女平泽唯误打误撞之下填补了最后一位...
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+        
+        <div class="bangumi-pagination">
+    <a class="bangumi-button bangumi-firstpage" href="javascript:;" target="_self" onclick="return false"> 首页</a>
+    <a class="bangumi-button bangumi-previouspage" href="javascript:;" target="_self" onclick="return false">上一页</a>
+    <span class="bangumi-pagenum">2 / 3</span>
+    <a class="bangumi-button bangumi-nextpage" href="javascript:;" target="_self" onclick="return false">下一页</a>
+    <a class="bangumi-button bangumi-lastpage" href="javascript:;" target="_self" onclick="return false">尾页</a>
+</div>
+        
+    </div>
+</div>
+<script>
+    (function () {
+    
+    const bangumiLazyload = true;
+    "use strict";/* eslint-disable no-plusplus */(function(){// eslint-disable-next-line func-style
+function a(){this.classList.add("bangumi-active");for(var a=this.siblings(),b=0;b<a.length;b++)a[b].classList.remove("bangumi-active");// 显示对应板块
+var c=this.id.replace("tab","item"),d=document.getElementById(c);d.classList.remove("bangumi-hide"),d.classList.add("bangumi-show"),a=document.getElementById(c).siblings();for(var e=0;e<a.length;e++)a[e].classList.remove("bangumi-show"),a[e].classList.add("bangumi-hide")}Element.prototype.siblings=function(){for(var a=[],b=this.parentNode.children,c=0;c<b.length;c++)b[c]!==this&&a.push(b[c]);return a};for(var b=document.getElementsByClassName("bangumi-tab"),c=0;c<b.length;c++)b[c].onclick=a,b[c].onclick.apply(b[c]);"undefined"!=typeof pagenumsPre&&axios.get(new URL("../bangumis.json",window.location.href)).then(function(a){if(a.data){var b={wantWatch:a.data.wantWatch.slice(10).map(function(a){return ejs.render(ejsTemplate,{item:a,loading:loading,metaColor:metaColor,type:type})}).join("\n"),watching:a.data.watching.slice(10).map(function(a){return ejs.render(ejsTemplate,{item:a,loading:loading,metaColor:metaColor,type:type})}).join("\n"),watched:a.data.watched.slice(10).map(function(a){return ejs.render(ejsTemplate,{item:a,loading:loading,metaColor:metaColor,type:type})}).join("\n")};document.querySelectorAll("#bangumi-item1>.bangumi-pagination")[0].insertAdjacentHTML("beforeBegin",b.wantWatch),document.querySelectorAll("#bangumi-item2>.bangumi-pagination")[0].insertAdjacentHTML("beforeBegin",b.watching),document.querySelectorAll("#bangumi-item3>.bangumi-pagination")[0].insertAdjacentHTML("beforeBegin",b.watched)}})})();
+
+    document.getElementsByClassName('bangumi-tab')[1].click();
+    /* eslint-disable no-plusplus, func-style */(function(){var a=Math.ceil;function b(b,c){return`${b+1} / ${a(0==c.length/10?1:a(c.length/10))}`}function c(){const a=this.parentNode.siblings();g(a,0),this.parentNode.getElementsByClassName("bangumi-pagenum")[0].innerText=b(0,a)}function d(){const a=this.parentNode.siblings();let c=this.parentNode.getElementsByClassName("bangumi-pagenum")[0].innerText;c=c.substr(0,c.indexOf("/")-1),c=parseInt(c,10)-1,0<c&&c--,g(a,c),this.parentNode.getElementsByClassName("bangumi-pagenum")[0].innerText=b(c,a)}function e(){const c=this.parentNode.siblings();let d=this.parentNode.getElementsByClassName("bangumi-pagenum")[0].innerText;d=d.substr(0,d.indexOf("/")-1),d=parseInt(d,10)-1,d<a(c.length/10)-1&&d++,g(c,d),this.parentNode.getElementsByClassName("bangumi-pagenum")[0].innerText=b(d,c)}function f(){const c=this.parentNode.siblings();g(c,a(c.length/10)-1),this.parentNode.getElementsByClassName("bangumi-pagenum")[0].innerText=b(-1==a(c.length/10)-1?0:a(c.length/10)-1,c)}function g(a,b){for(let c=0;c<a.length;c++)if(Math.floor(c/10)===b){a[c].classList.remove("bangumi-hide");const[b]=a[c].getElementsByTagName("img");bangumiLazyload&&(b.src=b.getAttribute("data-src"))}else a[c].classList.add("bangumi-hide")}const h=document.getElementsByClassName("bangumi-firstpage"),j=document.getElementsByClassName("bangumi-previouspage"),k=document.getElementsByClassName("bangumi-nextpage"),l=document.getElementsByClassName("bangumi-lastpage"),m=document.getElementsByClassName("bangumi-pagenum");for(let b=0;b<h.length;b++){h[b].onclick=c,j[b].onclick=d,k[b].onclick=e,l[b].onclick=f;// set page num
+const g="undefined"==typeof pagenumsPre?m[b].parentNode.siblings().length:pagenumsPre[b]??m[b].parentNode.siblings().length;h[b].click(),m[b].innerText=`1 / ${0===a(g/10)?1:a(g/10)}`}})();
+
+    })();
+</script>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="http://image.penguinway.space/i/2023/05/22/646b8a951dcd7.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Penguin</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/penguinway"><i class="fab fa-github"></i><span>GitHub</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/penguinway" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:penguinloveyousa@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">蒟蒻瑟瑟发抖~</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/05/01/hello-world/" title="Hello World"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2024/05/01/hello-world/" title="Hello World">Hello World</a><time datetime="2024-05-01T07:43:31.720Z" title="发表于 2024-05-01 15:43:31">2024-05-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/01/1/" title="无题"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/05/01/1/" title="无题">无题</a><time datetime="2024-05-01T07:43:31.710Z" title="发表于 2024-05-01 15:43:31">2024-05-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/14/flag-is-here-but-where-is-password/" title="Flag is here but where is Password"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Flag is here but where is Password"/></a><div class="content"><a class="title" href="/2023/10/14/flag-is-here-but-where-is-password/" title="Flag is here but where is Password">Flag is here but where is Password</a><time datetime="2023-10-14T11:31:16.000Z" title="发表于 2023-10-14 19:31:16">2023-10-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/16/misc%E5%93%87%EF%BC%81%E6%B5%B7%E8%B4%BC%E7%8E%8B%EF%BC%81%E9%BB%91%E9%BE%99%E6%B1%9F%E7%9C%81%E8%B5%9B/" title="[Misc]哇！海贼王！(黑龙江省赛)"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="[Misc]哇！海贼王！(黑龙江省赛)"/></a><div class="content"><a class="title" href="/2023/09/16/misc%E5%93%87%EF%BC%81%E6%B5%B7%E8%B4%BC%E7%8E%8B%EF%BC%81%E9%BB%91%E9%BE%99%E6%B1%9F%E7%9C%81%E8%B5%9B/" title="[Misc]哇！海贼王！(黑龙江省赛)">[Misc]哇！海贼王！(黑龙江省赛)</a><time datetime="2023-09-16T15:33:58.000Z" title="发表于 2023-09-16 23:33:58">2023-09-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/16/misc%E7%99%BE%E4%B8%87%E5%AF%8C%E7%BF%81wp/" title="[Misc]百万富翁WP"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="[Misc]百万富翁WP"/></a><div class="content"><a class="title" href="/2023/09/16/misc%E7%99%BE%E4%B8%87%E5%AF%8C%E7%BF%81wp/" title="[Misc]百万富翁WP">[Misc]百万富翁WP</a><time datetime="2023-09-16T14:50:10.000Z" title="发表于 2023-09-16 22:50:10">2023-09-16</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/2023/"><span class="card-category-list-name">2023</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/CTF/"><span class="card-category-list-name">CTF</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/ctf/"><span class="card-category-list-name">ctf</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/ctf/Misc/"><span class="card-category-list-name">Misc</span><span class="card-category-list-count">2</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/uncategorized/"><span class="card-category-list-name">uncategorized</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8A%98%E8%85%BE%E9%82%A3%E4%BA%9B%E4%BA%8B/"><span class="card-category-list-name">服务器折腾那些事</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CTF/" style="font-size: 1.5em; color: #99a9bf">CTF</a> <a href="/tags/BUUCTF/" style="font-size: 1.1em; color: #999">BUUCTF</a> <a href="/tags/CISCN2023/" style="font-size: 1.1em; color: #999">CISCN2023</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.1em; color: #999">服务器</a> <a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 1.1em; color: #999">图床</a> <a href="/tags/Write-UP/" style="font-size: 1.1em; color: #999">Write-UP</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">5</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">10</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2022-09-02T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">1.9k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-03-26T08:50:24.991Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By Penguin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn">赣ICP备2022008380号</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
