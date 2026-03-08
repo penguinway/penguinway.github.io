@@ -1,0 +1,3 @@
+var posts=["2023/05/21/2023贡橙杯ctf院赛write-up/","2023/05/25/buuctf-misc-n种方法解决/","2023/05/27/ciscn-2023初赛misc27日部分wp/","2023/05/26/ciscn2022初赛-everlasting-night题解/","2023/09/16/misc哇！海贼王！黑龙江省赛/","2023/05/23/使用开源项目搭建自用图床/","2023/09/16/misc百万富翁wp/","2024/05/01/hello-world/","2025/03/26/Electron音视频播放器开发踩坑/","2025/04/07/Electron音视频播放器开发踩坑2/"];function toRandomPost(){
+    pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
+  };
