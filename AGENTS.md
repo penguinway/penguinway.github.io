@@ -6,7 +6,7 @@
 
 继续工作前先阅读 `docs/PROJECT_HANDOFF.md`，以用户最新指令为准。
 
-用户已确定采用 **Astro + 接近现站的主题，再补齐喜欢的功能**。2026-11-09 用户已明确要求 **开始实现**：可初始化 Astro 工程、获取主题、安装依赖并在本地构建与预览。2026-11-09 用户进一步授权 **部署**：站点已上线 https://penguinway.github.io/ ，源码仓库 `penguinway/penguinway.github.io`，push 到 `main` 触发 `.github/workflows/deploy.yml` 自动构建部署。后续提交、推送、DNS 变更仍需另行授权。
+用户已确定采用 **Astro + 接近现站的主题，再补齐喜欢的功能**。2026-11-09 用户已明确要求 **开始实现**：可初始化 Astro 工程、获取主题、安装依赖并在本地构建与预览。2026-11-09 用户进一步授权 **部署**：源码仓库 `penguinway/penguinway.github.io`，push 到 `main` 触发 `.github/workflows/deploy.yml` 自动构建部署。2026-11-09 晚用户要求：**更换站点 icon、把新站部署到 txcloud（blog.penguinway.space）、取代 WordPress，并把本次排查与部署写成博客发布**；反向代理明确由用户自己维护。本轮已完成部署与发布。后续新的提交、推送、DNS 变更仍需另行授权。
 
 ## 工作原则
 
@@ -27,12 +27,12 @@
 - 保留旧文章 URL，无法保留时准备映射与重定向方案。
 - WordPress 曾失陷。后续只迁移审核过的文章与媒体，不复用旧站运行代码、数据库配置或可执行插件，不把已失陷的 WordPress 作为新站 CMS。
 - 安全调查原始证据、凭据、数据库转储和带登录态资料留在原运维目录，禁止导入新博客仓库或公开站点。
-- 原 WordPress 保持不动。GitHub Pages 已按用户 2026-11-09 的授权切换为 Astro 新站（仓库 `penguinway/penguinway.github.io` 的 `main` 分支由 Actions 构建部署；旧 Hexo 生成站保留在 `master` 分支留档）。不擅自变更 DNS。
+- WordPress 曾失陷，已按 2026-11-09 授权完成排查与干净重建，并由静态新站取代：反代切换后停止旧容器，但保留数据、镜像与取证材料；不得把旧漏洞环境恢复公网。GitHub Pages 已切换为 Astro 新站（仓库 `penguinway/penguinway.github.io` 的 `main` 分支由 Actions 构建部署；旧 Hexo 生成站保留在 `master` 分支留档），现在作为 txcloud 主站的镜像。不擅自变更 DNS；共享的 1Panel OpenResty 反代配置由用户维护，不要擅自修改。
 
 ## 工具与验证
 
 - 文件和文本查找优先 `rg`；按需阅读，避免无关全仓扫描。
 - 纯本地工作优先仓库信息；需核实最新版本、主题状态、文档行为和授权时查询官方来源，并区分事实、推断和建议。
 - 修改后执行与范围匹配的最小充分验证；文档准备不安装依赖或运行构建。
-- 仓库已初始化并推送到 `penguinway/penguinway.github.io`（`main` 分支，2026-11-09），未经要求不创建新提交或推送。包管理器为 pnpm 12（本地 corepack 12.18.0）。
+- 仓库 `penguinway/penguinway.github.io` 的 `main` 分支已推送站点迁移、txcloud 部署与本轮文章（2026-11-09）；之后新的提交与推送仍需授权。包管理器为 pnpm 12（本地 corepack 12.18.0）。
 - 如宿主应用不能切换原会话目录，明确说明限制；不可把“交接文件已写入”说成“原会话已迁移”。

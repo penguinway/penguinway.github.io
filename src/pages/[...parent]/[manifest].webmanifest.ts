@@ -32,6 +32,17 @@ export function GET() {
           sizes: '180x180',
           type: 'image/png',
         },
+        {
+          src: url('/img/site-icon/icon-192.png'),
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        {
+          src: url('/img/site-icon/icon-512.png'),
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'any',
+        },
       ],
     },
     { headers: { 'Content-Type': 'application/manifest+json' } },

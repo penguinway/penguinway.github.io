@@ -89,7 +89,24 @@ const inlineVars = Object.entries(vars)
       title={config.title}
       href={url('/index.xml')}
     />
-    <link rel="icon" href={url(cfg.site.icon)} />
+    <link rel="icon" href={url('/favicon.ico')} sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href={url(cfg.pwa.favicon_16_16)}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href={url(cfg.pwa.favicon_32_32)}
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={url(cfg.pwa.apple_touch_icon)}
+    />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta
@@ -112,28 +129,6 @@ const inlineVars = Object.entries(vars)
         <link rel="manifest" href={url(cfg.pwa.manifest)} />
         <meta name="theme-color" content={cfg.pwa.theme_color} />
         <meta name="mobile-web-app-capable" content="yes" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href={url(cfg.pwa.apple_touch_icon)}
-        />
-        <link
-          rel="mask-icon"
-          href={url(cfg.pwa.mask_icon)}
-          color={cfg.pwa.theme_color}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href={url(cfg.pwa.favicon_16_16)}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href={url(cfg.pwa.favicon_32_32)}
-        />
         <link rel="bookmark" href={url(cfg.pwa.bookmark_icon)} />
       </>
     )}

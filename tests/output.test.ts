@@ -9,9 +9,9 @@ test('static output preserves legacy post URLs, feeds and site pages', async () 
   assert.ok(home.includes('lang="zh-CN"'));
   assert.ok(home.includes('企鹅的小站'));
 
-  // 每篇文章的旧 Hexo 地址都输出为真实的平铺 HTML 文件。
+  // 旧 Hexo 文章（post-<数字>.md）都保留原地址并输出为真实的平铺 HTML 文件。
   const sources = (await fs.readdir('src/content/posts')).filter((name) =>
-    name.endsWith('.md'),
+    /^post-\d+\.md$/.test(name),
   );
   assert.ok(sources.length > 0);
   const search = await fs.readFile('dist/search.xml', 'utf8');
@@ -85,4 +85,39 @@ test('all emitted local asset and page URLs resolve', async () => {
     );
     await assert.doesNotReject(fs.stat(file), `Missing local URL: ${url}`);
   }
+});
+
+test('site icon set, canonical domain and new post', async () => {
+  const home = await fs.readFile('dist/index.html', 'utf8');
+  assert.ok(home.includes('rel="icon" href="/favicon.ico"'));
+  assert.ok(home.includes('/img/site-icon/icon-32.png'));
+  assert.ok(
+    home.includes('<link rel="canonical" href="https://blog.penguinway.space/"'),
+  );
+
+  const manifest = JSON.parse(
+    await fs.readFile('dist/manifest.json', 'utf8'),
+  ) as { icons: { sizes: string }[] };
+  assert.deepEqual(
+    manifest.icons.map((icon) => icon.sizes),
+    ['180x180', '192x192', '512x512'],
+  );
+  for (const file of [
+    'dist/favicon.ico',
+    'dist/img/site-icon/icon-16.png',
+    'dist/img/site-icon/icon-32.png',
+    'dist/img/site-icon/icon-180.png',
+    'dist/img/site-icon/icon-192.png',
+    'dist/img/site-icon/icon-512.png',
+  ])
+    assert.ok((await fs.stat(file)).isFile(), file);
+
+  // 新文章使用主题默认地址 /p/<slug>/，同时进入搜索索引。
+  const route = '/p/wordpress-incident-and-astro-migration/';
+  const html = await fs.readFile(
+    path.join('dist', route, 'index.html'),
+    'utf8',
+  );
+  assert.ok(html.includes('id="post"'));
+  assert.ok((await fs.readFile('dist/search.xml', 'utf8')).includes(route));
 });

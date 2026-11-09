@@ -3,7 +3,7 @@ import { defineSolitudeConfig } from './lib/config';
 const avatar = '/img/avatar.png';
 
 export default defineSolitudeConfig({
-  site: 'https://penguinway.github.io',
+  site: 'https://blog.penguinway.space',
   title: '企鹅的小站',
   description: '记录开发、网络安全与服务器折腾的个人博客',
   locale: 'zh-CN',
@@ -135,6 +135,12 @@ export default defineSolitudeConfig({
       ],
     },
     search: { tags: ['CTF', '开发', '服务器'], local: { preload: true } },
-    pwa: { enable: true },
+    pwa: {
+      enable: true,
+      apple_touch_icon: '/img/site-icon/icon-180.png',
+      favicon_16_16: '/img/site-icon/icon-16.png',
+      favicon_32_32: '/img/site-icon/icon-32.png',
+      bookmark_icon: '/img/site-icon/icon-32.png',
+    },
   },
 });

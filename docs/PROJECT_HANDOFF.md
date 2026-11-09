@@ -2,19 +2,22 @@
 
 记录日期：2026-11-09（Asia/Shanghai）。
 
-## 用户最新指令与当前状态（2026-11-09 第六轮后）
+## 用户最新指令与当前状态（2026-11-09 第八轮后）
 
-用户在本会话的指令：**接手剩余工作 → 同意部署到 GitHub Pages（penguinway.github.io）并配置 GitHub Action**。
+用户在本会话的指令：**换站点 icon → 把新站部署到 txcloud（blog.penguinway.space，反代由用户自己维护）→ 取代 WordPress → 把这次排查与部署写成新的博客发布**。
 
 当前状态：
 
-- **已上线**：https://penguinway.github.io/ （GitHub Pages + Actions 自动部署，详见第五轮记录）。
-- 源码仓库 `penguinway/penguinway.github.io`，默认分支 `main`；首个提交已推送，之后 push 到 `main` 会自动构建部署。
-- 本地可复现：`pnpm check` 0 错误，`pnpm build` 生成 32 页 + 14 个重定向页，`pnpm test` 25/25 通过，`pnpm docs:check` 通过。
+- **主站已部署到 txcloud**：静态构建产物由 `nginx:stable-alpine` 容器 `blog-static` 托管在服务器 `127.0.0.1:8089`，容器只读挂载产物、无 PHP/数据库。DNS 的 A 记录本就指向 txcloud（82.157.254.160）。
+- **反代尚未切换**：服务器 1Panel OpenResty 的 `blog.penguinway.space` 仍指向旧 WordPress（`127.0.0.1:8088`），用户将自行把上游改为 `127.0.0.1:8089`；切换并确认后停掉 WordPress 容器（用户已确认：保留数据和镜像）。
+- **GitHub Pages 继续作为镜像**：https://penguinway.github.io/ 由 Actions 自动构建部署，canonical 已指向主站 `https://blog.penguinway.space/`。
+- **站点 icon 已更换**：使用旧 WordPress 的 site icon 图，生成 `favicon.ico` 与 16/32/48/180/192/512 的 PNG；PWA manifest、apple-touch-icon、bookmark 同步指向新图标。
+- **新文章已发布**：《WordPress 被入侵之后：我把博客搬到了 Astro 静态站》，地址 `/p/wordpress-incident-and-astro-migration/`，脱敏技术版（无攻击者 IP/账号/内部路径/凭据）。
+- 本地可复现：`pnpm check` 0 错误，`pnpm build` 生成 37 页，`pnpm test` 26/26 通过，`pnpm docs:check` 通过；服务器 `127.0.0.1:8089` 关键地址全部 200，含自定义 404。
 - 旧 Hexo 文章 URL（`/posts/<id>.html`）、分类/标签旧大小写地址、`/link/`、`/comments/`、年/月归档地址、`/atom.xml` 订阅均已保留或重定向。
 - 模板自带的占位页（`/equipment/`、`/music/`、`/brevity/`、`/recentcomments/`、`/series/`）已按旧站形态移除，模板示例数据已清空。
-- 封面/主题色已按用户选择定稿：本地中性深蓝渐变封面、关闭封面取色；浅色强调色 #425aef，深色强调色 #8ea6ff。
-- Bangumi 已绑定用户 `934887`，追番数据可用 `pnpm bangumi:update` 更新；评论、音乐按用户之前的要求暂缓。
+- 封面/主题色维持第七轮定稿：本地中性深蓝渐变封面、关闭封面取色；浅色强调色 #425aef，深色强调色 #8ea6ff。
+- Bangumi 已绑定用户 `934887`，追番在部署时自动更新；评论、音乐按用户之前的要求暂缓。
 
 本文件其余部分保留历史记录（初期的“主题未选定、尚未实现”等描述是当时的边界，现已过时）。
 
@@ -25,7 +28,7 @@
 - 现站参考：GitHub Pages 旧站（Hexo 安知鱼），2026-11-09 经用户授权已由 Astro 新站替换；WordPress 站点与 DNS 未动。
 - 待迁移的 WordPress 博客：`blog.penguinway.space`。
 
-Astro 是已接受的技术方向；主题已选 **Astro Solitude**（见“实施进展”）。部署已确定为 GitHub Pages（`penguinway.github.io`）；自定义域名、后台编辑方式仍未确认。不要重新把技术选型讨论当作从零开始。
+Astro 是已接受的技术方向；主题已选 **Astro Solitude**（见“实施进展”）。部署方式是 txcloud 主站 + GitHub Pages 镜像，自定义域名 `blog.penguinway.space` 已启用；后台编辑方式仍未确认。不要重新把技术选型讨论当作从零开始。
 
 ## 前序只读调研所得
 
@@ -191,6 +194,41 @@ Astro 是已接受的技术方向；主题已选 **Astro Solitude**（见“实�
 - 换 Bangumi 账号时改工作流里的 `934887`，并可在本地跑一次脚本更新仓库里的兜底数据。
 - 验证：提交推送后 Actions 运行成功，构建日志包含 `wantWatch/watching/watched` 输出；线上站点仍为 200。
 
+### 第八轮：换 icon、部署 txcloud、发布排查文章（2026-11-09，用户指令）
+
+用户指令：“换一下站点的icon，然后部署到txcloud上，blog.penguinway.space，反代交给我，取代WordPress，把这次排查WordPress和部署新博客的事写成新的博客发布”。
+
+**站点 icon**
+
+- 用户选择沿用旧 WordPress 站的 site icon（940×940 粉发插画，原图在 `image.penguinway.space`，与旧站浏览器标签一致）。
+- 新增 `public/favicon.ico`（16/32/48 多尺寸）与 `public/img/site-icon/icon-{16,32,48,180,192,512}.png`；`src/layouts/Base.astro` 改为输出完整 favicon 集（此前浏览器标签会落到主题自带的纸飞机图标），并移除 `mask-icon` 与 PWA 段里重复的 icon 链接。
+- `src/site.config.ts` 的 `pwa` 配置改为新图标；两个 manifest 路由补充 192/512 图标。
+
+**域名与部署**
+
+- `site` 改为 `https://blog.penguinway.space`；`src/data/links.json` 里的本站友链同步。
+- 服务器 txcloud（82.157.254.160）新建 `/data/disk/blog-static/{dist,conf}`；容器 `blog-static`（`nginx:stable-alpine`，`--restart unless-stopped`，`--security-opt no-new-privileges`，`127.0.0.1:8089->80`，产物与配置均只读挂载，日志 10m×3 轮转）。
+- 仓库新增 `deploy/nginx-blog-static.conf` 与 `deploy/README.md`（首次部署、更新、验证、回滚、停 WordPress 的命令）。
+- **反代未改**（用户明确“反代交给我”）：`/data/disk/1panel/www/conf.d/blog.penguinway.space.conf` 仍 `proxy_pass http://127.0.0.1:8088`。用户把上游改成 `http://127.0.0.1:8089` 即切换到新站；`*.penguinway.space` 通配证书有效期至 2026-12-09，无需调整。
+- 切换后停止旧 WordPress：`sudo docker stop 1Panel-wordpress-ok95 && sudo docker update --restart=no 1Panel-wordpress-ok95`（用户已确认保留数据与镜像；该容器当前 restart 策略是 `always`，只 stop 会在 Docker 重启后恢复，所以加 `update --restart=no`）。
+- 公网仍由旧 WordPress 提供服务（响应头 `x-powered-by: PHP`），直到用户切反代。
+
+**新文章**
+
+- `src/content/posts/post-wordpress-incident.md`：《WordPress 被入侵之后：我把博客搬到了 Astro 静态站》，地址 `/p/wordpress-incident-and-astro-migration/`，日期 2026-11-09 22:30，分类“服务器折腾那些事”，标签 WordPress / 安全 / Astro / 部署。
+- 披露口径为脱敏技术版：写明 CVE-2026-63030 / CVE-2026-60137（wp2shell）、时间线与攻击手法类别、排查方法（访问日志、binlog、官方校验和、镜像与 webroot 版本错位）和部署架构；不含攻击者 IP/UA、后门账号名、内部路径、数据库名、凭据与载荷原文。
+
+**验证**
+
+- 本地：`pnpm check` 0 错误；`pnpm build` 37 页；`pnpm test` 26/26；`pnpm docs:check` 通过。新增断言覆盖 favicon 集、canonical 域名与新文章输出。
+- 服务器：`127.0.0.1:8089` 首页、新文章、9 个旧文章地址、分类/标签、归档、`/atom.xml`、`/index.xml`、`/search.xml`、`/sitemap.xml`、`/links.json`、`/manifest.json`、`/favicon.ico` 与新图标均 200；不存在路径 404 + 自定义 404 页；经 DSH SSH 隧道从本机复验通过。
+- 已提交并推送 `main`，GitHub Pages 镜像同步构建部署。
+
+**遗留**
+
+- 反代切换与停 WordPress 容器由用户执行（见上）。
+- 系统 OpenSSH 客户端不可用（`/etc/ssh/ssh_config.d` 权限问题，`ssh`/`rsync` 报 “Bad owner or permissions”），本轮用 DSH 的 `ssh_upload`/`ssh_exec` 完成上传与执行；后续部署同样需要可用 SSH 通道。
+
 ### 待用户决定
 
 1. **原图来源**：见“媒体核查结果”；若有旧图床/WordPress 备份，需用户提供位置（52 处图片仍是“图片已失效”占位）。
@@ -201,4 +239,8 @@ Astro 是已接受的技术方向；主题已选 **Astro Solitude**（见“实�
 
 ## 给下一位 Agent 的接续提示
 
-站点已通过 GitHub Actions 部署在 https://penguinway.github.io/ ，源码在仓库 `penguinway/penguinway.github.io` 的 `main` 分支。本地可构建、测试和预览：`corepack pnpm check && corepack pnpm build && corepack pnpm test`（在本机需按第四轮的环境变量说明设置 HOME 等；`pnpm test:e2e` 暂不适用）。按用户指令处理上面的待决定事项；后续提交、推送、部署仍需用户另行授权。原 WordPress 与 DNS 保持不动。
+主站部署在 txcloud（`/data/disk/blog-static` + 容器 `blog-static`，上游 `http://127.0.0.1:8089`），GitHub Pages 是镜像；源码在仓库 `penguinway/penguinway.github.io` 的 `main` 分支。部署、更新、回滚步骤见 `deploy/README.md`。本地可构建、测试和预览：`corepack pnpm check && corepack pnpm build && corepack pnpm test`（在本机需按第四轮的环境变量说明设置 HOME 等；`pnpm test:e2e` 暂不适用）。
+
+**本机环境注意**：系统 OpenSSH 客户端因 `/etc/ssh/ssh_config.d` 权限问题不可用，`ssh`/`rsync` 会报 “Bad owner or permissions”；本轮部署改用 DSH 自带的 `ssh_upload`/`ssh_exec`。CC Safety Net 还拦截了读取 `~/.ssh/config`、`~/.ssh` 目录和服务器证书 `.pem` 的只读检查，不要尝试绕过。
+
+按用户指令处理上面的待决定事项；后续新的提交、推送、部署仍需用户另行授权。反代仍由用户维护，不要擅自修改共享 OpenResty 配置；旧 WordPress 容器在反代切换确认后停止，数据与取证材料保留，不得把旧漏洞环境恢复公网。
