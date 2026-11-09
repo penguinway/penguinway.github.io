@@ -115,6 +115,7 @@ export default defineSolitudeConfig({
     },
     // 示例歌单不是站长的，先关闭；评论服务未接入（旧站 twikooEnvId 为空）。
     capsule: { enable: false },
+    page: { default: { cover: ['/img/cover-default.avif'] } },
     post: {
       meta: { locate: false },
       // 统一使用本地中性封面；不启用封面取色，避免整站强调色被单张封面图带偏。

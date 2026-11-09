@@ -13,7 +13,8 @@
 - 本地可复现：`pnpm check` 0 错误，`pnpm build` 生成 32 页 + 14 个重定向页，`pnpm test` 25/25 通过，`pnpm docs:check` 通过。
 - 旧 Hexo 文章 URL（`/posts/<id>.html`）、分类/标签旧大小写地址、`/link/`、`/comments/`、年/月归档地址、`/atom.xml` 订阅均已保留或重定向。
 - 模板自带的占位页（`/equipment/`、`/music/`、`/brevity/`、`/recentcomments/`、`/series/`）已按旧站形态移除，模板示例数据已清空。
-- 评论、音乐按用户之前的要求暂缓；封面/主题色、Bangumi 自动更新等仍待用户决定（见文末）。
+- 封面/主题色已按用户选择定稿：本地中性深蓝渐变封面、关闭封面取色；浅色强调色 #425aef，深色强调色 #8ea6ff。
+- Bangumi 已绑定用户 `934887`，追番数据可用 `pnpm bangumi:update` 更新；评论、音乐按用户之前的要求暂缓。
 
 本文件其余部分保留历史记录（初期的“主题未选定、尚未实现”等描述是当时的边界，现已过时）。
 
@@ -169,15 +170,24 @@ Astro 是已接受的技术方向；主题已选 **Astro Solitude**（见“实�
 - 后续发布流程：修改源码 → 提交到 `main` → push → Actions 自动构建并部署（提交/推送仍需用户授权）。无需再登录服务器或手动上传。
 - 2026-11-09 时 `master` 分支旧站生成文件的最后部署记录为 2026-07-16；旧站内容仍可从 git 历史找回。
 
+### 第六轮：封面、主题色与追番数据（2026-11-09，用户确认）
+
+用户回复：“封面与主题色 B，域名就继续吧，bangumi ID 934887”。
+
+- **封面**：新增 `public/img/cover-default.avif`（1920×1080，本地生成的深蓝中性渐变图，不使用模板素材），`theme.post.default.cover` 与 `theme.page.default.cover` 指向它；模板的 SOLITUDE 封面图不再出现在页面里。
+- **主题色**：`theme_color.light = #425aef`、`theme_color.dark = #8ea6ff`（浅蓝保证深色背景上正文链接/目录的可读性）。`theme.post.covercolor.enable = false` 关闭封面取色；深色主题下文章页头部和侧栏作者卡在 `src/styles/custom.css` 中覆盖为深蓝底，保证白色文字对比度。副作用：不再加载 jsdelivr 的 color-thief，第三方 CDN 资源从 4 个降到 3 个（fancybox CSS/JS + vanilla-lazyload）。
+- **域名**：确认继续使用 `https://penguinway.github.io`，不绑定自定义域名，`site` 配置保持现状。
+- **追番**：`pnpm bangumi:update 934887` 成功，`src/data/bangumis.json` 记录 `userId: "934887"` 与 `updatedAt`（想看 17 / 在看 9 / 已看 21，与旧站一致）；以后更新只需运行该命令，无需其他改动。
+- **验证**：本地 `pnpm check` / `build` / `test`（25/25）/ `docs:check` 通过；明暗两套主题下首页、文章页、追番、友链、关于截图检查通过，无控制台错误。已提交 `aa1092c` 并推送 `main`，GitHub Actions 部署成功；线上确认使用新封面、`--solitude-theme-light:#425aef`、`--solitude-theme-dark:#8ea6ff`，`/img/cover-default.avif` 返回 200。
+- 顺带修复：提交时发现本机 `HOME` 被工具链覆盖会导致 git 身份读取失败，提交/推送命令需使用原始 `HOME`。
+
 ### 待用户决定
 
-1. **封面与主题色**：首页大图、文章卡片、文章页封面目前都用主题默认的 SOLITUDE 封面图，且该图取色后让站点强调色偏灰。可选：保留现状 / 换成中性本地占位图 / 关闭取色恢复 #425aef 蓝 / 用户提供自己的封面图（原站图片已全部 404）。
-2. **Bangumi 自动更新**：需要 Bangumi 用户名或数字 ID（现有数据是从旧站页面手工提取的）。
-3. **原图来源**：见“媒体核查结果”；若有旧图床/WordPress 备份，需用户提供位置。
-4. **测试与占位页**：模板 E2E 用例是否裁剪/改造成本站冒烟用例，或暂时保留不运行；是否还有想保留的模板功能页（装备页等）。
-5. **旧站 Hello World**：`/posts/16107.html` 是 Hexo 默认脚手架文章，未迁移；是否要加一条重定向（如 → `/archives/`）以免旧链接 404。
-6. **第三方 CDN**：主题依赖 `cdn.jsdelivr.net` 的 4 个资源，国内访问可能变慢或失败；是否自托管到 `public/`。
-7. **评论、音乐**：此前用户要求暂缓，需要时再接入。
+1. **原图来源**：见“媒体核查结果”；若有旧图床/WordPress 备份，需用户提供位置（52 处图片仍是“图片已失效”占位）。
+2. **测试与占位页**：模板 E2E 用例是否裁剪/改造成本站冒烟用例，或暂时保留不运行；是否还有想保留的模板功能页（装备页等）。
+3. **旧站 Hello World**：`/posts/16107.html` 是 Hexo 默认脚手架文章，未迁移；是否要加一条重定向（如 → `/archives/`）以免旧链接 404。
+4. **第三方 CDN**：仍有 3 个资源走 `cdn.jsdelivr.net`（fancybox CSS/JS、vanilla-lazyload），国内访问可能变慢或失败；是否自托管到 `public/`。
+5. **评论、音乐**：此前用户要求暂缓，需要时再接入。
 
 ## 给下一位 Agent 的接续提示
 
