@@ -2,17 +2,18 @@
 
 记录日期：2026-11-09（Asia/Shanghai）。
 
-## 用户最新指令与当前状态（2026-11-09 第四轮后）
+## 用户最新指令与当前状态（2026-11-09 第五轮后）
 
-用户在本会话的指令：**接手剩余工作**。
+用户在本会话的指令：**接手剩余工作 → 同意部署到 GitHub Pages（penguinway.github.io）并配置 GitHub Action**。
 
-当前状态（本机可复现）：
+当前状态：
 
-- 站点可构建、可本地预览：`pnpm check` 0 错误，`pnpm build` 生成 32 页，`pnpm test` 25/25 通过。
+- **已上线**：https://penguinway.github.io/ （GitHub Pages + Actions 自动部署，详见第五轮记录）。
+- 源码仓库 `penguinway/penguinway.github.io`，默认分支 `main`；首个提交已推送，之后 push 到 `main` 会自动构建部署。
+- 本地可复现：`pnpm check` 0 错误，`pnpm build` 生成 32 页 + 14 个重定向页，`pnpm test` 25/25 通过，`pnpm docs:check` 通过。
 - 旧 Hexo 文章 URL（`/posts/<id>.html`）、分类/标签旧大小写地址、`/link/`、`/comments/`、年/月归档地址、`/atom.xml` 订阅均已保留或重定向。
 - 模板自带的占位页（`/equipment/`、`/music/`、`/brevity/`、`/recentcomments/`、`/series/`）已按旧站形态移除，模板示例数据已清空。
-- 未提交、未推送、未部署；评论、音乐按用户之前的要求暂缓。
-- 仍待用户决定的事项集中在文末“待用户决定”。
+- 评论、音乐按用户之前的要求暂缓；封面/主题色、Bangumi 自动更新等仍待用户决定（见文末）。
 
 本文件其余部分保留历史记录（初期的“主题未选定、尚未实现”等描述是当时的边界，现已过时）。
 
@@ -20,11 +21,10 @@
 
 - 采用 Astro，并优先选择接近现有 Hexo 安知鱼风格的主题，再按需适配功能。
 - 用户优先考虑外观、访问速度和维护成本；Markdown/Git 写作或网页后台两种方式均可。
-- 现站参考：https://penguinway.github.io/
+- 现站参考：GitHub Pages 旧站（Hexo 安知鱼），2026-11-09 经用户授权已由 Astro 新站替换；WordPress 站点与 DNS 未动。
 - 待迁移的 WordPress 博客：`blog.penguinway.space`。
-- 暂不替换、下线或修改现有站点。
 
-Astro 是已接受的技术方向；主题已选 **Astro Solitude**（见“实施进展”）。部署平台、域名安排、后台编辑方式仍未确认。不要重新把技术选型讨论当作从零开始。
+Astro 是已接受的技术方向；主题已选 **Astro Solitude**（见“实施进展”）。部署已确定为 GitHub Pages（`penguinway.github.io`）；自定义域名、后台编辑方式仍未确认。不要重新把技术选型讨论当作从零开始。
 
 ## 前序只读调研所得
 
@@ -157,18 +157,28 @@ Astro 是已接受的技术方向；主题已选 **Astro Solitude**（见“实�
 - **未处理**：`pnpm test:e2e` 是模板自带用例，依赖已删除的模板示例内容（`/p/components/`、`/p/writing/` 等），当前不适用于本站，未运行也未改造；封面与首页主题色仍来自主题默认封面图（灰调）。
 - 预览命令：`corepack pnpm preview --host 127.0.0.1 --port 4321`（本轮已在 4321 后台运行）。
 
+### 第五轮：部署到 GitHub Pages（2026-11-09，用户授权）
+
+用户指令：“同意，部署吧，在 github page penguinway.github.io，配置好 github action”。
+
+- 仓库：`penguinway/penguinway.github.io`（GitHub Pages 用户站仓库）。Astro 源码提交到 `main` 分支，提交 `迁移旧站内容并启用 GitHub Pages 自动部署`（无 AI 署名）；默认分支已改为 `main`。旧 Hexo 生成站仍保留在 `master` 分支，仅作历史留档，不再参与部署。
+- 工作流 [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml)：push 到 `main` 或手动触发；Node 24 + pnpm 12.18.0；`pnpm install --frozen-lockfile` → `pnpm check` → `pnpm build` → `pnpm test` → `actions/upload-pages-artifact` → `actions/deploy-pages`。Actions 版本按上游当前 major：checkout v7、setup-node v7、pnpm/action-setup v6、configure-pages v6、upload-pages-artifact v5、deploy-pages v5。
+- Pages 设置：Build and deployment 来源由 legacy（master 分支根目录）切换为 **GitHub Actions**（`build_type=workflow`）；`github-pages` 环境的部署分支策略补上 `main`（保留 `master`）；custom 404 与 HTTPS 强制保持开启。
+- 首次部署失败过一次：`Branch "main" is not allowed to deploy to github-pages due to environment protection rules`。原因是环境策略只放行 `master`；添加 `main` 后重跑成功（run `42609082740`）。
+- 线上验证（2026-11-09，curl 绕过缓存）：首页、9 篇文章、关于、归档、分类、标签、追番、友链、留言板、404 全部 200；`/atom.xml` 9 条 entry、`/index.xml` 9 条 item、`/search.xml`、`/sitemap.xml`、`/robots.txt`、`/links.json`、`/manifest.json` 正常；14 个旧地址重定向（`/link/`、`/comments/`、分类/标签旧大小写、年/月归档）全部指向正确目标；不存在的路径返回 404 + 自定义 404 页；`_astro` 下的 CSS/JS 200。
+- 后续发布流程：修改源码 → 提交到 `main` → push → Actions 自动构建并部署（提交/推送仍需用户授权）。无需再登录服务器或手动上传。
+- 2026-11-09 时 `master` 分支旧站生成文件的最后部署记录为 2026-07-16；旧站内容仍可从 git 历史找回。
+
 ### 待用户决定
 
 1. **封面与主题色**：首页大图、文章卡片、文章页封面目前都用主题默认的 SOLITUDE 封面图，且该图取色后让站点强调色偏灰。可选：保留现状 / 换成中性本地占位图 / 关闭取色恢复 #425aef 蓝 / 用户提供自己的封面图（原站图片已全部 404）。
 2. **Bangumi 自动更新**：需要 Bangumi 用户名或数字 ID（现有数据是从旧站页面手工提取的）。
 3. **原图来源**：见“媒体核查结果”；若有旧图床/WordPress 备份，需用户提供位置。
-4. **部署平台与域名**：`src/site.config.ts` 的 `site` 目前仍指向旧站 `https://penguinway.github.io`，部署前必须确定新地址（GitHub Pages / 其他静态托管 / 自定义域名）。
-5. **首次提交的时机**：git 已初始化（`main`，无提交；当前全部文件未跟踪）。提交信息不带 AI 署名。
-6. **测试与占位页**：模板 E2E 用例是否裁剪/改造成本站冒烟用例，或暂时保留不运行；是否还有想保留的模板功能页（装备页等）。
-7. **旧站 Hello World**：`/posts/16107.html` 是 Hexo 默认脚手架文章，未迁移；是否要加一条重定向（如 → `/archives/`）以免旧链接 404。
-8. **第三方 CDN**：主题依赖 `cdn.jsdelivr.net` 的 4 个资源，国内访问可能变慢或失败；是否自托管到 `public/`。
-9. **评论、音乐**：此前用户要求暂缓，需要时再接入。
+4. **测试与占位页**：模板 E2E 用例是否裁剪/改造成本站冒烟用例，或暂时保留不运行；是否还有想保留的模板功能页（装备页等）。
+5. **旧站 Hello World**：`/posts/16107.html` 是 Hexo 默认脚手架文章，未迁移；是否要加一条重定向（如 → `/archives/`）以免旧链接 404。
+6. **第三方 CDN**：主题依赖 `cdn.jsdelivr.net` 的 4 个资源，国内访问可能变慢或失败；是否自托管到 `public/`。
+7. **评论、音乐**：此前用户要求暂缓，需要时再接入。
 
 ## 给下一位 Agent 的接续提示
 
-工程可以构建、测试和预览：`corepack pnpm check && corepack pnpm build && corepack pnpm test`（在本机需按第四轮的环境变量说明设置 HOME 等）。按用户指令处理上面的待决定事项；提交、推送、部署仍需用户另行授权。原站（GitHub Pages、WordPress、DNS）保持不动。
+站点已通过 GitHub Actions 部署在 https://penguinway.github.io/ ，源码在仓库 `penguinway/penguinway.github.io` 的 `main` 分支。本地可构建、测试和预览：`corepack pnpm check && corepack pnpm build && corepack pnpm test`（在本机需按第四轮的环境变量说明设置 HOME 等；`pnpm test:e2e` 暂不适用）。按用户指令处理上面的待决定事项；后续提交、推送、部署仍需用户另行授权。原 WordPress 与 DNS 保持不动。
