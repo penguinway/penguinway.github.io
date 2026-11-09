@@ -1,0 +1,13 @@
+.skip-link{position:fixed;left:1rem;top:-100px;z-index:10000;padding:1rem;background:var(--efu-card-bg);color:var(--efu-fontcolor)}.skip-link:focus{top:1rem}
+/* Shiki tokens use the source theme's code-block layout and background. */
+:root:not([data-theme=dark]) .code-block .astro-code span{color:var(--shiki-light,inherit)}
+html[data-theme=dark] .code-block .astro-code span{color:var(--shiki-dark,inherit)}
+.reward-list{display:flex;gap:1rem}.reward-list img{max-width:160px}.reward{margin:auto;text-align:center}.reward summary{cursor:pointer}.empty-state{padding:4rem 1rem;text-align:center}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nowrapMove,.skills-marquee-track{animation:none!important}}
+
+.solitude-toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:99999;padding:.8rem 1.2rem;border-radius:12px;background:var(--efu-card-bg);color:var(--efu-fontcolor);box-shadow:var(--efu-shadow-border)}
+.solitude-memorial{filter:grayscale(1)}
+#loading-box{position:fixed;inset:0;z-index:9999;background:var(--efu-background);display:grid;place-items:center;pointer-events:none;transition:opacity .2s}
+#loading-box img{width:80px;height:80px}#loading-box.loaded{opacity:0;visibility:hidden}
+#navigation-progress{position:fixed;inset:0 auto auto 0;height:3px;background:var(--efu-theme);z-index:10000;width:70%;transform-origin:left;transition:width .3s,opacity .2s;pointer-events:none}
+html[data-solitude-runtime="ready"] #navigation-progress{width:100%;opacity:0}

@@ -1,0 +1,320 @@
+---
+import data from '../../data/bangumis.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = '追番列表', description = '' } = Astro.props;
+
+type Item = (typeof data.watched)[number];
+const tabs: { key: 'wantWatch' | 'watching' | 'watched'; label: string }[] = [
+  { key: 'wantWatch', label: '想看' },
+  { key: 'watching', label: '在看' },
+  { key: 'watched', label: '已看' },
+];
+const lists = Object.fromEntries(
+  tabs.map((t) => [t.key, (data[t.key] ?? []) as Item[]]),
+);
+// 默认打开“在看”，为空时退到第一个非空列表
+const initial =
+  tabs.find((t) => t.key === 'watching' && lists[t.key].length) ??
+  tabs.find((t) => lists[t.key].length) ??
+  tabs[0];
+const progress = (i: Item) =>
+  i.totalCount ? Math.min(100, Math.round((i.ep_status / i.totalCount) * 100)) : 0;
+const fmt = (n: number | null) =>
+  n == null ? '-' : n >= 10000 ? `${(n / 10000).toFixed(1)}万` : String(n);
+---
+
+<section class="bangumi-page">
+  <header class="page-title-wrap">
+    <h1 class="page-title">{title}</h1>
+    {description && <p class="bangumi-desc">{description}</p>}
+  </header>
+
+  {tabs.map((t) => (
+    <input
+      class="bangumi-radio"
+      type="radio"
+      name="bangumi-tab"
+      id={`bangumi-tab-${t.key}`}
+      checked={t.key === initial.key}
+    />
+  ))}
+  <nav class="bangumi-tabs" aria-label="追番分类">
+    {tabs.map((t) => (
+      <label for={`bangumi-tab-${t.key}`} data-tab={t.key}>
+        {t.label}
+        <span class="bangumi-count">{lists[t.key].length}</span>
+      </label>
+    ))}
+  </nav>
+
+  {tabs.map((t) => (
+    <div class="bangumi-panel" data-tab={t.key}>
+      {lists[t.key].length === 0 ? (
+        <p class="bangumi-empty">这里还空空如也～</p>
+      ) : (
+        <ul class="bangumi-list">
+          {lists[t.key].map((i) => (
+            <li class="bangumi-card">
+              <a
+                class="bangumi-cover"
+                href={`https://bgm.tv/subject/${i.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                <img
+                  src={i.cover}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer"
+                  width="110"
+                  height="155"
+                />
+              </a>
+              <div class="bangumi-body">
+                <h2 class="bangumi-name">
+                  <a
+                    href={`https://bgm.tv/subject/${i.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {i.title}
+                  </a>
+                </h2>
+                <ul class="bangumi-meta">
+                  <li>{i.totalCount ? `全${i.totalCount}话` : '集数未知'}</li>
+                  {i.tags && <li>{i.tags}</li>}
+                  <li>关注 {fmt(i.collect)}</li>
+                  <li class="bangumi-score">
+                    <i class="fas fa-star" aria-hidden="true" /> {i.score ?? '-'}
+                  </li>
+                </ul>
+                {t.key !== 'wantWatch' && i.totalCount ? (
+                  <div
+                    class="bangumi-progress"
+                    role="progressbar"
+                    aria-valuemin="0"
+                    aria-valuemax={i.totalCount}
+                    aria-valuenow={i.ep_status}
+                    aria-label="追番进度"
+                  >
+                    <span style={`width:${progress(i)}%`} />
+                    <em>
+                      {i.ep_status}/{i.totalCount}
+                    </em>
+                  </div>
+                ) : null}
+                {i.des && <p class="bangumi-summary">{i.des}</p>}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  ))}
+
+  {data.updatedAt && (
+    <p class="bangumi-footnote">
+      数据来自 <a href="https://bgm.tv/" target="_blank" rel="noopener noreferrer">Bangumi 番组计划</a>，
+      更新于 {new Date(data.updatedAt).toLocaleDateString('zh-CN')}
+    </p>
+  )}
+</section>
+
+<style>
+  .bangumi-page {
+    padding: 1.5rem;
+    border-radius: var(--efu-radius-md, 12px);
+    background: var(--efu-card-bg);
+    border: var(--style-border, 1px solid var(--efu-card-border));
+  }
+  .page-title {
+    margin: 0 0 0.25rem;
+    text-align: center;
+  }
+  .bangumi-desc {
+    margin: 0;
+    text-align: center;
+    color: var(--efu-secondtext);
+  }
+  .bangumi-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .bangumi-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.25rem 0;
+  }
+  .bangumi-tabs label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 1rem;
+    border-radius: var(--efu-radius-pill, 999px);
+    border: var(--style-border, 1px solid var(--efu-card-border));
+    background: var(--efu-secondbg);
+    color: var(--efu-fontcolor);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .bangumi-tabs label:hover {
+    background: var(--efu-main);
+    color: var(--efu-white);
+  }
+  .bangumi-count {
+    font-size: 0.75rem;
+    opacity: 0.75;
+  }
+  .bangumi-panel {
+    display: none;
+  }
+  #bangumi-tab-wantWatch:checked ~ .bangumi-tabs [data-tab='wantWatch'],
+  #bangumi-tab-watching:checked ~ .bangumi-tabs [data-tab='watching'],
+  #bangumi-tab-watched:checked ~ .bangumi-tabs [data-tab='watched'] {
+    background: var(--efu-main);
+    color: var(--efu-white);
+    border-color: var(--efu-main);
+  }
+  #bangumi-tab-wantWatch:checked ~ .bangumi-panel[data-tab='wantWatch'],
+  #bangumi-tab-watching:checked ~ .bangumi-panel[data-tab='watching'],
+  #bangumi-tab-watched:checked ~ .bangumi-panel[data-tab='watched'] {
+    display: block;
+  }
+  #bangumi-tab-wantWatch:focus-visible ~ .bangumi-tabs [data-tab='wantWatch'],
+  #bangumi-tab-watching:focus-visible ~ .bangumi-tabs [data-tab='watching'],
+  #bangumi-tab-watched:focus-visible ~ .bangumi-tabs [data-tab='watched'] {
+    outline: 2px solid var(--efu-main);
+    outline-offset: 2px;
+  }
+  .bangumi-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .bangumi-card {
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0.75rem;
+    border-radius: var(--efu-radius-sm, 8px);
+    border: var(--style-border, 1px solid var(--efu-card-border));
+    background: var(--efu-background);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .bangumi-card:hover {
+    border-color: var(--efu-main);
+    box-shadow: var(--efu-shadow-main);
+  }
+  .bangumi-card::before {
+    display: none;
+  }
+  .bangumi-cover {
+    flex: 0 0 auto;
+  }
+  .bangumi-cover img {
+    display: block;
+    width: 90px;
+    height: 127px;
+    margin: 0;
+    object-fit: cover;
+    border-radius: var(--efu-radius-sm, 8px);
+    background: var(--efu-secondbg);
+  }
+  .bangumi-body {
+    min-width: 0;
+    flex: 1;
+  }
+  .bangumi-name {
+    margin: 0 0 0.4rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    border: 0;
+    padding: 0;
+  }
+  .bangumi-name a {
+    color: var(--efu-fontcolor);
+    text-decoration: none;
+  }
+  .bangumi-name a:hover {
+    color: var(--efu-main);
+  }
+  .bangumi-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.75rem;
+    color: var(--efu-secondtext);
+  }
+  .bangumi-meta li {
+    margin: 0;
+    padding: 0;
+  }
+  .bangumi-meta li::before {
+    display: none;
+  }
+  .bangumi-score {
+    color: var(--efu-orange, #f59e0b);
+  }
+  .bangumi-progress {
+    position: relative;
+    height: 14px;
+    margin: 0.5rem 0;
+    border-radius: 7px;
+    overflow: hidden;
+    background: var(--efu-secondbg);
+  }
+  .bangumi-progress span {
+    display: block;
+    height: 100%;
+    background: var(--efu-main);
+  }
+  .bangumi-progress em {
+    position: absolute;
+    inset: 0;
+    font-size: 0.65rem;
+    font-style: normal;
+    line-height: 14px;
+    text-align: center;
+    color: var(--efu-fontcolor);
+  }
+  .bangumi-summary {
+    display: -webkit-box;
+    margin: 0.4rem 0 0;
+    overflow: hidden;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--efu-secondtext);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+  .bangumi-empty,
+  .bangumi-footnote {
+    text-align: center;
+    color: var(--efu-secondtext);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 768px) {
+    .bangumi-page {
+      padding: 1rem;
+    }
+    .bangumi-tabs label {
+      padding: 0.3rem 0.75rem;
+    }
+  }
+</style>

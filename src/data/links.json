@@ -1,0 +1,18 @@
+{
+  "links": [
+    {
+      "class_name": "友人帐",
+      "class_desc": "欢迎在留言板按格式留言交换友链：名称 / 描述 / 网址 / 头像",
+      "type": "card",
+      "link_list": [
+        {
+          "name": "企鹅的小站",
+          "link": "https://penguinway.github.io",
+          "avatar": "/img/avatar.png",
+          "descr": "记录开发、网络安全与服务器折腾的个人博客",
+          "tag": "本站"
+        }
+      ]
+    }
+  ]
+}
