@@ -1,1 +1,15 @@
 /* Site overrides load after the theme. Keep personal customizations here. */
+
+/*
+ * 深色主题的强调色使用浅蓝（保证正文链接、目录等文字可读），
+ * 文章页头部与侧栏作者卡仍保持深蓝底，保证白色文字对比度。
+ */
+html[data-theme='dark'] .post #page-header.post-bg {
+  --efu-main: #2b3a8f;
+}
+
+html[data-theme='dark'] #aside-content .card-info {
+  --current-banner-theme: #2b3a8f;
+  --current-banner-theme-op: color-mix(in srgb, #2b3a8f 14%, transparent);
+  --current-banner-theme-op-deep: color-mix(in srgb, #2b3a8f 87%, transparent);
+}

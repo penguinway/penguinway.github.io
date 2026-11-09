@@ -30,17 +30,36 @@ export default defineSolitudeConfig({
     },
     {
       name: '关于',
-      children: [{ name: '关于本人', url: '/about/', icon: 'fas fa-paper-plane' }],
+      children: [
+        { name: '关于本人', url: '/about/', icon: 'fas fa-paper-plane' },
+      ],
     },
   ],
   theme: {
     site: { name: { class: 'text', custom: '企鹅的小站' }, icon: avatar },
     lightbox: 'fancybox',
+    // 与原站一致使用蓝色强调色：浅色主题为主题蓝，深色主题用浅蓝保证正文链接可读。
+    theme_color: {
+      light: '#425aef',
+      dark: '#8ea6ff',
+    },
     hometop: {
       recommendList: [
-        { title: '2023贡橙杯CTF院赛Write-UP', url: '/posts/53360.html', label: '荐' },
-        { title: 'Electron音视频播放器开发踩坑', url: '/posts/62818.html', label: '荐' },
-        { title: 'Electron音视频播放器开发踩坑2', url: '/posts/15605.html', label: '荐' },
+        {
+          title: '2023贡橙杯CTF院赛Write-UP',
+          url: '/posts/53360.html',
+          label: '荐',
+        },
+        {
+          title: 'Electron音视频播放器开发踩坑',
+          url: '/posts/62818.html',
+          label: '荐',
+        },
+        {
+          title: 'Electron音视频播放器开发踩坑2',
+          url: '/posts/15605.html',
+          label: '荐',
+        },
       ],
     },
     aside: {
@@ -53,7 +72,11 @@ export default defineSolitudeConfig({
         content: '蒟蒻瑟瑟发抖~',
         witty_words: ['Happy Life~'],
         information: [
-          { name: 'GitHub', url: 'https://github.com/penguinway', icon: 'fab fa-github' },
+          {
+            name: 'GitHub',
+            url: 'https://github.com/penguinway',
+            icon: 'fab fa-github',
+          },
           {
             name: 'Email',
             url: 'mailto:penguinloveyousa@gmail.com',
@@ -67,7 +90,11 @@ export default defineSolitudeConfig({
       information: {
         author: avatar,
         left: [
-          { name: 'GitHub', url: 'https://github.com/penguinway', icon: 'fab fa-github' },
+          {
+            name: 'GitHub',
+            url: 'https://github.com/penguinway',
+            icon: 'fab fa-github',
+          },
         ],
         right: [{ name: 'RSS', url: '/index.xml', icon: 'fas fa-rss' }],
       },
@@ -82,14 +109,20 @@ export default defineSolitudeConfig({
           { name: '友人帐', url: '/links/' },
         ],
       },
-      beian: [{ name: '赣ICP备2022008380号', url: 'https://beian.miit.gov.cn/' }],
+      beian: [
+        { name: '赣ICP备2022008380号', url: 'https://beian.miit.gov.cn/' },
+      ],
     },
     // 示例歌单不是站长的，先关闭；评论服务未接入（旧站 twikooEnvId 为空）。
     capsule: { enable: false },
     post: {
       meta: { locate: false },
-      covercolor: { enable: true, mode: 'local' },
-      default: { copyright: { author: avatar } },
+      // 统一使用本地中性封面；不启用封面取色，避免整站强调色被单张封面图带偏。
+      covercolor: { enable: false, mode: 'local' },
+      default: {
+        cover: ['/img/cover-default.avif'],
+        copyright: { author: avatar },
+      },
     },
     brevity: { enable: false },
     keyboard: {
