@@ -23,15 +23,17 @@ pnpm build    # 输出到 dist/
 
 ## 部署
 
-仓库 `penguinway/penguinway.github.io` 的 `main` 分支每次推送会触发 [GitHub Actions](.github/workflows/deploy.yml)：
+仓库 `penguinway/penguinway.github.io` 的 `main` 分支每次推送，或每天 04:00（Asia/Shanghai）的定时任务，都会触发 [GitHub Actions](.github/workflows/deploy.yml)：
 
 1. 安装 Node 24 与 pnpm 12.18.0；
 2. `pnpm install --frozen-lockfile`；
-3. `pnpm check`（类型检查）、`pnpm build`（生成 `dist/`）、`pnpm test`（单元测试）；
-4. 上传构建产物并部署到 GitHub Pages。
+3. `pnpm bangumi:update 934887`：从 Bangumi 拉取最新追番收藏；接口不可用时沿用仓库中的数据，不阻断部署；
+4. `pnpm check`（类型检查）、`pnpm build`（生成 `dist/`）、`pnpm test`（单元测试）；
+5. 上传构建产物并部署到 GitHub Pages。
 
 - Pages 的 Build and deployment 来源已设为 **GitHub Actions**；`github-pages` 环境的部署分支策略放行 `main`。
-- 也可在 Actions 页面手动触发该工作流（workflow_dispatch）。
+- 追番无需手动更新：每次部署都会刷新；只想刷新追番时，在 Actions 页面手动运行一次工作流即可。
+- 更换 Bangumi 账号时，修改 `.github/workflows/deploy.yml` 里的用户 ID `934887`（可再本地跑一次 `pnpm bangumi:update <ID>` 更新仓库里的兜底数据）。
 - 旧 Hexo 站的生成文件仍保留在仓库 `master` 分支，仅作历史参考，不参与部署。
 
 ## Agent 接续

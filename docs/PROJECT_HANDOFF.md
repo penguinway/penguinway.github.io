@@ -177,9 +177,19 @@ Astro 是已接受的技术方向；主题已选 **Astro Solitude**（见“实�
 - **封面**：新增 `public/img/cover-default.avif`（1920×1080，本地生成的深蓝中性渐变图，不使用模板素材），`theme.post.default.cover` 与 `theme.page.default.cover` 指向它；模板的 SOLITUDE 封面图不再出现在页面里。
 - **主题色**：`theme_color.light = #425aef`、`theme_color.dark = #8ea6ff`（浅蓝保证深色背景上正文链接/目录的可读性）。`theme.post.covercolor.enable = false` 关闭封面取色；深色主题下文章页头部和侧栏作者卡在 `src/styles/custom.css` 中覆盖为深蓝底，保证白色文字对比度。副作用：不再加载 jsdelivr 的 color-thief，第三方 CDN 资源从 4 个降到 3 个（fancybox CSS/JS + vanilla-lazyload）。
 - **域名**：确认继续使用 `https://penguinway.github.io`，不绑定自定义域名，`site` 配置保持现状。
-- **追番**：`pnpm bangumi:update 934887` 成功，`src/data/bangumis.json` 记录 `userId: "934887"` 与 `updatedAt`（想看 17 / 在看 9 / 已看 21，与旧站一致）；以后更新只需运行该命令，无需其他改动。
+- **追番**：`pnpm bangumi:update 934887` 成功，`src/data/bangumis.json` 记录 `userId: "934887"` 与 `updatedAt`（想看 17 / 在看 9 / 已看 21，与旧站一致）；第七轮已改为在部署时自动执行该命令。
 - **验证**：本地 `pnpm check` / `build` / `test`（25/25）/ `docs:check` 通过；明暗两套主题下首页、文章页、追番、友链、关于截图检查通过，无控制台错误。已提交 `aa1092c` 并推送 `main`，GitHub Actions 部署成功；线上确认使用新封面、`--solitude-theme-light:#425aef`、`--solitude-theme-dark:#8ea6ff`，`/img/cover-default.avif` 返回 200。
 - 顺带修复：提交时发现本机 `HOME` 被工具链覆盖会导致 git 身份读取失败，提交/推送命令需使用原始 `HOME`。
+
+### 第七轮：追番改为部署时自动更新（2026-11-09，用户要求）
+
+用户指令：“可不可以把追番改为自动在部署时更新获取”。
+
+- `.github/workflows/deploy.yml` 在“安装依赖”之后、“类型检查/构建”之前新增 `更新追番数据` 步骤：`pnpm bangumi:update 934887`；设置 `continue-on-error: true` 与 5 分钟超时，Bangumi 接口失败时沿用仓库中已提交的 `src/data/bangumis.json`，不阻断部署。
+- 工作流新增定时触发 `schedule: cron '0 20 * * *'`（UTC 20:00 = 每天 04:00 Asia/Shanghai）：即使不推送代码，也会每天重新构建部署并刷新追番；保留原有 `push` 与 `workflow_dispatch`。
+- 本地演练：`pnpm bangumi:update 934887` 成功（想看 17 / 在看 9 / 已看 21，`updatedAt` 与收藏数刷新）；工作流 YAML 解析通过。
+- 换 Bangumi 账号时改工作流里的 `934887`，并可在本地跑一次脚本更新仓库里的兜底数据。
+- 验证：提交推送后 Actions 运行成功，构建日志包含 `wantWatch/watching/watched` 输出；线上站点仍为 200。
 
 ### 待用户决定
 

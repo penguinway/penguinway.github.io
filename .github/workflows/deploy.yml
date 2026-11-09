@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # 每天 04:00（Asia/Shanghai）自动部署一次，顺带刷新追番数据。
+  schedule:
+    - cron: '0 20 * * *'
   workflow_dispatch:
 
 permissions:
@@ -34,6 +37,12 @@ jobs:
 
       - name: 安装依赖
         run: pnpm install --frozen-lockfile
+
+      # 部署前从 Bangumi 拉取最新追番收藏；接口不可用时继续用仓库中的 JSON，不阻断部署。
+      - name: 更新追番数据
+        run: pnpm bangumi:update 934887
+        continue-on-error: true
+        timeout-minutes: 5
 
       - name: 类型检查
         run: pnpm check
